@@ -2,8 +2,9 @@ from flask import (Blueprint, render_template, request, flash, redirect, url_for
 from projeto.db import get_db
 from werkzeug.security import check_password_hash, generate_password_hash
 
-bp = Blueprint('auth', __name__, url_prefix='/auth')
+import functools
 
+bp = Blueprint('auth', __name__, url_prefix='/auth')
 
 @bp.route('/register', methods=('GET', 'POST'))
 def register():
@@ -75,3 +76,12 @@ def load_logged_in_user():
 def logout():
     session.clear()
     return redirect(url_for('network.index'))
+
+def login_required(view):
+    @functools.wraps(view)
+    def wrapped_view(**kwargs):
+        if g.user is None:
+            flash("You must be logged in to view this page")
+            return redirect(url_for('auth.login'))
+        return view(**kwargs)
+    return wrapped_view
