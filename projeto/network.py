@@ -46,3 +46,13 @@ def create_post():
         flash(error)
 
     return render_template('network/create_post.html')    
+
+@bp.route('/user_post_list')
+@login_required
+def user_post_list():
+    db = get_db()
+    user_id = session.get('user_id')
+    posts = db.execute(
+        "SELECT * FROM post WHERE author_id = ?", (user_id,)
+    )
+    return render_template('network/user_post_list.html', posts=posts)
