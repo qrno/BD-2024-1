@@ -5,6 +5,7 @@
 </head>
 <body>
   <ul>
+    <li><a href="{{ url_for('network.index') }}">Index</a></li>
     {% if g.user %}
       <li>Logged in as {{ g.user['username'] }}</li>
       <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
