@@ -57,8 +57,8 @@ CREATE TABLE [like] (
 -- Deixei o id como única chave, caso contrário ele não pode ser autoincremento -- 
 CREATE TABLE comment (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  id_user INTEGER,
-  id_post INTEGER,
+  id_user INTEGER NOT NULL,
+  id_post INTEGER NOT NULL,
   content TEXT NOT NULL,
   created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (id_post) REFERENCES post(id),
