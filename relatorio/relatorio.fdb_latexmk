@@ -1,7 +1,9 @@
 # Fdb version 4
-["pdflatex"] 1725500317.2203 "/home/guilherme/Documentos/UnB/BD/BD-2024-1/relatorio/relatorio.tex" "relatorio.pdf" "relatorio" 1725500317.85816 0
-  "/home/guilherme/Documentos/UnB/BD/BD-2024-1/relatorio/relatorio.tex" 1725500311.27904 1063 c60c65615995ac742c66e35517be3ca0 ""
+["pdflatex"] 1725810651.38849 "/home/guilherme/Documentos/UnB/BD/BD-2024-1/relatorio/relatorio.tex" "relatorio.pdf" "relatorio" 1725810654.16428 0
+  "/home/guilherme/Documentos/UnB/BD/BD-2024-1/relatorio/relatorio.tex" 1725810650.85973 2224 41757d91084bf25ff716a631dfed2f97 ""
+  "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
+  "/usr/local/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1136768653 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -26,6 +28,7 @@
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1248133631 35752 024fb6c41858982481f6968b5fc26508 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb" 1248133631 32722 d7379af29a190c3f453aba36302ff5a9 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb" 1248133631 32362 179c33bbf43f19adbb3825bb4e36e57a ""
+  "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb" 1215737283 138258 6525c253f16cededa14c7fd0da7f67b2 ""
   "/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii" 1461363279 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "/usr/local/texlive/2024/texmf-dist/tex/generic/atbegshi/atbegshi.sty" 1575674566 24708 5584a51a7101caf7e6bbf1fc27d8f7b1 ""
   "/usr/local/texlive/2024/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty" 1576625341 40635 c40361e206be584d448876bba8a64a3b ""
@@ -86,10 +89,12 @@
   "/usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1711968734 8222899 bf18473ddc4fe69df9591c4d239c647a ""
   "/usr/local/texlive/2024/texmf.cnf" 1711968553.13554 455 5b996dcaa0eb4ef14a83b026bc0a008c ""
   "imagens/logo_unb.jpg" 1725499912.77534 143335 2045d844bafca73e2c907953591178e0 ""
-  "relatorio.aux" 1725500317.80416 1011 881471897c8e9510f10705220d9a3ec7 "pdflatex"
-  "relatorio.out" 1725500317.80516 1181 c12fb878b2c8e7261be41db97d1ef677 "pdflatex"
-  "relatorio.tex" 1725500311.27904 1063 c60c65615995ac742c66e35517be3ca0 ""
-  "relatorio.toc" 1725500317.80516 562 1d1a7d1662112e6205f9935a17fd6122 "pdflatex"
+  "imagens/mer.png" 1725809640.83529 61677 05e37e33440707b49c1beaba6ad29347 ""
+  "imagens/mr.jpg" 1725810056.4745 120508 7bcd326ec907eea17a87079ec32891df ""
+  "relatorio.aux" 1725810653.94767 1276 604a59cb0120dc8e4bbdd8029ef2096a "pdflatex"
+  "relatorio.out" 1725810653.94967 1181 c12fb878b2c8e7261be41db97d1ef677 "pdflatex"
+  "relatorio.tex" 1725810650.85973 2224 41757d91084bf25ff716a631dfed2f97 ""
+  "relatorio.toc" 1725810653.95067 562 56f6e845f97b6e7317dc551689a0fb8b "pdflatex"
   (generated)
   "relatorio.aux"
   "relatorio.log"
