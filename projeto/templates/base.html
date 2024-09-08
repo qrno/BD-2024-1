@@ -4,7 +4,7 @@
   <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}" />
 </head>
 <body>
-  <ul>
+  <ul class="nav">
     <li><a href="{{ url_for('network.index') }}">Index</a></li>
     {% if g.user %}
       <li>Logged in as {{ g.user['username'] }}</li>
@@ -14,8 +14,6 @@
       <li><a href="{{ url_for('auth.register') }}">Register</a></li>
     {% endif %}
   </ul>
-
-  <hr>
 
   {% if get_flashed_messages() %}
     <ul>
