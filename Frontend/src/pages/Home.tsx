@@ -1,7 +1,7 @@
 /* import axios from 'axios'
 import { api } from '../lib/api.ts' */
 
-export default function Products() {
+export function Home() {
     return(
         <>
             <div>
