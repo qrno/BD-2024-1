@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Group List</h1>
+
+<ul>
+  {% for group in groups %}
+  <li>{{group.name}} - {{group.created}}</li>
+  {% endfor %}
+</ul>
+
+{% endblock %}
