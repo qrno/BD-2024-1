@@ -1,0 +1,11 @@
+{% macro post_view(post) -%}
+<div class="post-main">
+  <div class="post-header">
+    <h1>{{post.title}}</h1>
+    Posted on {{post.created}} in the group {{post.id_group}} by {{post.id_user}}.
+  </div>
+  <div class="post-content">
+    {{post.body}}
+  </div>
+</div>
+{%- endmacro %}

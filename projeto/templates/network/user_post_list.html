@@ -1,12 +1,13 @@
 {% extends "base.html" %}
+{% from 'network/post_view.html' import post_view %}
 
 {% block content %}
 <h1>Your Posts</h1>
 
-<ul>
+<div>
   {% for post in posts %}
-  <li>{{post.title}} - {{post.body}}</li>
+  {{post_view(post)}}
   {% endfor %}
-</ul>
+</div>
 
 {% endblock %}

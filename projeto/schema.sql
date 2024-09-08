@@ -15,17 +15,19 @@ CREATE TABLE user (
   password TEXT NOT NULL
 );
 
--- Primeira forma normal -- 
+-- Primeira forma normal --
 CREATE TABLE post (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  author_id INTEGER NOT NULL,
+  id_user INTEGER NOT NULL,
+  id_group INTEGER NOT NULL,
   created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   title TEXT NOT NULL,
   body TEXT NOT NULL,
-  FOREIGN KEY (author_id) REFERENCES user (id)
+  FOREIGN KEY (id_user) REFERENCES user (id)
+  FOREIGN KEY (id_group) REFERENCES [group] (id)
 );
 
--- Talvez fosse melhor essa tabela só ter um id próprio -- 
+-- Talvez fosse melhor essa tabela só ter um id próprio --
 CREATE TABLE repost (
   id_post INTEGER,
   id_user INTEGER,
@@ -71,8 +73,8 @@ CREATE TABLE [group] (
 
 -- Primeira forma normal --
 CREATE TABLE membership (
-  id_user INTEGER,
-  id_group INTEGER,
+  id_user INTEGER NOT NULL,
+  id_group INTEGER NOT NULL,
   PRIMARY KEY (id_user, id_group),
   FOREIGN KEY (id_user) REFERENCES user(id),
   FOREIGN KEY (id_group) REFERENCES [group](id)

@@ -5,7 +5,7 @@
 
 <ul>
   {% for group in groups %}
-  <li>{{group.name}} - {{group.created}}</li>
+  <li><a href={{url_for('network.group_view', id_group=group.id)}}>{{group.name}}</a> - {{group.created}}</li>
   {% endfor %}
 </ul>
 

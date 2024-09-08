@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% from "network/post_view.html" import post_view %}
+
+{% block content %}
+
+<div class="group-main">
+  <div class="group-header">
+    <h1>{{group.name}}</h1>
+    Created on {{group.created}}.
+    <details>
+      <summary>Members</summary>
+      <ul>
+        {% for member in members %}
+          {{member.name}}
+        {% endfor %}
+      </ul>
+    </details>
+    <hr>
+  </div>
+
+  <div class="group-content">
+    <h2>Posts</h2>
+
+    <a href="{{url_for('network.create_post', id_group=group.id)}}">Create Post</a>
+
+    <div>
+      {% for post in posts %}
+        {{post_view(post)}}
+      {% endfor %}
+    </div>
+  </div>
+<div>
+
+{% endblock %}
