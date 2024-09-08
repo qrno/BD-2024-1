@@ -1,0 +1,19 @@
+- Página do usuário
+  - mostra os grupos dele
+  - mostra os posts
+  - foto do usuário
+- Adicionar seguir usuários
+- Adicionar comentários
+- Adicionar mensagens
+- Colocar os posts no index
+
+- Camada de persistência
+
+- CRUD
+  - Editar e Deletar posts
+  - Editar e Deletar usuário
+  - Editar e deletar comentário
+
+- uma View
+- uma procedure
+  - com comandos condicionais
