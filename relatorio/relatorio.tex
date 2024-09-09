@@ -86,7 +86,10 @@ As entidades se relacionam de 6 maneiras distintas:
 \begin{enumerate}
         \item Likes: um usuário pode curtir $n$ publicações e uma publicação pode ser curtida por $n$ usuários. Post tem participação total na relação, isto é, toda publicação é feita por algum usuário, mas nem todo usuário faz uma publicação (participação parcial).
         \item Reposts: um usuário pode repostar $n$ publicações e uma publicação pode ser repostada por $n$ usuários. Ambas as entidades têm participação parcial no diagrama.
-        \item Comments: um usuário pode fazer $n$ comentários em uma publicação e uma publicação pode ter $n$ usuários comentando.
+        \item Comments: um usuário pode fazer $n$ comentários em uma publicação e uma publicação pode ter $n$ usuários comentando. Cada comentário possui sua própria identificação.
+        \item Follows: relacionamento recursivo onde um usuário pode seguir $n$ usuários.
+        \item Membership: um usuário pode fazer parte de $n$ grupos e um grupo pode ter $n$ membros, onde cada grupo tem que ter pelo menos um usuário que faz parte dele.
+        \item Messages: relacionamento ternário entre dois usuários e um chat, onde um usuário pode ter $n$ conversas com outros usuários e um chat pertence a um par de usuários.
 \end{enumerate}
 
 \section{Modelo Relacional}
