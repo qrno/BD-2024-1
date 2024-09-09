@@ -132,3 +132,15 @@ def like_post(id_post):
     
     return redirect(request.referrer)
     
+@bp.route('/comment_post/<id_post>', methods=['POST'])
+@login_required
+def comment_post(id_post):
+    db = get_db()
+    user = session.get('user_id')
+    body = request.form['body']
+    if not body:
+        flash(f"Content is required")
+    else:
+        insert_comment(user, id_post, body, db)
+        return redirect(request.referrer or '/')
+    return render_template('network/index.html')
