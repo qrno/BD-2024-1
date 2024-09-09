@@ -68,3 +68,100 @@ a {
   margin: 0.2em;
   border-bottom: 1px solid;
 }
+
+/* LOGIN */
+
+.form-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-sizing: border-box;
+  background: #1f2937;
+  padding: 2em;
+  border-radius: 0.5em;
+  width: 80%;
+}
+
+.label-login {
+  font-size: 20px;
+  margin-top: 0.2em;
+  margin-bottom: 0.2em;
+}
+
+.input-login {
+  width: 25%;
+  height: 2em;
+  border-radius: 0.5em;
+  margin-bottom: 2em;
+  padding: 0.4em;
+}
+
+.buttom-login {
+  padding-left: 2em;
+  padding-right: 2em;
+  padding-top: 1.2em;
+  padding-bottom: 1.2em;
+  border-radius: 0.5em;
+}
+
+/* POST */
+
+.post-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.post-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-sizing: border-box;
+  background: #1f2937;
+  padding: 2em;
+  border-radius: 0.5em;
+  width: 80%;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.post-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 20px;
+}
+
+.post-content {
+  margin-top: 2em;
+}
+
+.textarea-post {
+  width: 25%;
+  height: 10em;
+  border-radius: 0.5em;
+  margin-bottom: 2em;
+  padding: 0.4em;
+}
+
+/* GROUP */
+
+.group-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.group-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
