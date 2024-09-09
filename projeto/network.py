@@ -106,3 +106,17 @@ def user_group_list():
     groups = get_user_groups(user_id, db)
 
     return render_template('network/user_group_list.html', groups=groups)
+
+@bp.route('/follow_user/<id_user>', methods=['POST'])
+@login_required
+def follow_user(id_user):
+    db = get_db()
+    followed = session.get('user_id')
+    error = None
+    try:
+        insert_follow(followed, id_user, db)
+    except db.IntegrityError:
+        flash(f"Already Following")
+    
+    return render_template('network/user_list.html', users=get_all_users(get_db()))
+    
