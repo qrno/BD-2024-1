@@ -119,4 +119,16 @@ def follow_user(id_user):
         flash(f"Already Following")
     
     return render_template('network/user_list.html', users=get_all_users(get_db()))
+
+@bp.route('/like_post/<id_post>', methods=['POST'])
+@login_required
+def like_post(id_post):
+    db = get_db()
+    user = session.get('user_id')
+    try:
+        insert_like(user, id_post, db)
+    except db.IntegrityError:
+        flash(f"Already Liked")
+    
+    return redirect(request.referrer)
     
