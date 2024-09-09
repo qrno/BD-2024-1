@@ -89,11 +89,11 @@ def group_list():
 def group_view(id_group):
     db  = get_db()
 
-    group = get_group(id_group, db)
+    group = get_group(id_group, db).fetchone()
 
-    posts = get_group_posts(id_group, db)
+    posts = get_group_posts(id_group, db).fetchall()
     
-    members = get_group_members(id_group, db)
+    members = get_group_members(id_group, db).fetchall()
 
     return render_template('network/group_view.html', group=group, posts=posts, members=members)
 

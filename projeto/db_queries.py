@@ -8,6 +8,11 @@ def get_all_groups(db):
         "SELECT * FROM [group]"
     )
 
+def get_all_memberships(db):
+    return db.execute(
+        "SELECT * FROM membership"
+    )
+
 def get_user_groups(user_id, db):
     return db.execute(
         '''
