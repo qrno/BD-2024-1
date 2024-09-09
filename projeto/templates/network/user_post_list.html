@@ -4,7 +4,7 @@
 {% block content %}
 <h1>Your Posts</h1>
 
-<div>
+<div class="post-list">
   {% for post in posts %}
   {{post_view(post)}}
   {% endfor %}

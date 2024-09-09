@@ -23,7 +23,7 @@
 
     <a href="{{url_for('network.create_post', id_group=group.id)}}">Create Post</a>
 
-    <div>
+    <div class="post-list">
       {% for post in posts %}
         {{post_view(post)}}
       {% endfor %}
