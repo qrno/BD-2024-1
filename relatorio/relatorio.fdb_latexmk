@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1725903796.25153 "/home/guilherme/Documentos/UnB/BD/BD-2024-1/relatorio/relatorio.tex" "relatorio.pdf" "relatorio" 1725903797.766 0
-  "/home/guilherme/Documentos/UnB/BD/BD-2024-1/relatorio/relatorio.tex" 1725903795.9247 4477 5cb33c9c4e050b1e4145e438015387e1 ""
+["pdflatex"] 1725905678.56399 "/home/guilherme/Documentos/UnB/BD/BD-2024-1/relatorio/relatorio.tex" "relatorio.pdf" "relatorio" 1725905680.03801 0
+  "/home/guilherme/Documentos/UnB/BD/BD-2024-1/relatorio/relatorio.tex" 1725905678.22027 5421 4bc19463011f353ae9efb402e08aad69 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1136768653 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
@@ -94,12 +94,12 @@
   "/usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1711968734 8222899 bf18473ddc4fe69df9591c4d239c647a ""
   "/usr/local/texlive/2024/texmf.cnf" 1711968553.13554 455 5b996dcaa0eb4ef14a83b026bc0a008c ""
   "imagens/logo_unb.jpg" 1725499912.77534 143335 2045d844bafca73e2c907953591178e0 ""
-  "imagens/mer.png" 1725903510.82563 63232 99424bc01e7d7ea19bf38312d04beff7 ""
+  "imagens/mer.png" 1725903870.94853 63232 99424bc01e7d7ea19bf38312d04beff7 ""
   "imagens/mr.jpg" 1725810736.84945 120508 7bcd326ec907eea17a87079ec32891df ""
-  "relatorio.aux" 1725903797.63767 2387 c06445f19d7dc66b264aaafac4a378fe "pdflatex"
-  "relatorio.out" 1725903797.63867 1772 d224b88d9f3e3133a45960651e8cd496 "pdflatex"
-  "relatorio.tex" 1725903795.9247 4477 5cb33c9c4e050b1e4145e438015387e1 ""
-  "relatorio.toc" 1725903797.63867 1263 59108604974b805b27682d6e616a4c95 "pdflatex"
+  "relatorio.aux" 1725905679.91625 2847 c6cf61369377384c75f0a29d19bcc36c "pdflatex"
+  "relatorio.out" 1725905679.91725 2274 04add6b447b13b7f95599bc4d5f53226 "pdflatex"
+  "relatorio.tex" 1725905678.22027 5421 4bc19463011f353ae9efb402e08aad69 ""
+  "relatorio.toc" 1725905679.91825 1523 5c748c0780c1a5a0fbd89afeb3981baa "pdflatex"
   (generated)
   "relatorio.aux"
   "relatorio.log"

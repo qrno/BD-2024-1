@@ -13,5 +13,8 @@
 \contentsline {section}{\numberline {3}Modelo Relacional}{5}{section.3}%
 \contentsline {section}{\numberline {4}Consultas em Álgebra Relacional}{5}{section.4}%
 \contentsline {section}{\numberline {5}Avaliação das formas normais}{5}{section.5}%
-\contentsline {section}{\numberline {6}Diagrama da Camada de Mapeamento}{5}{section.6}%
-\contentsline {section}{\numberline {7}Referências}{5}{section.7}%
+\contentsline {subsection}{\numberline {5.1}Primeira Forma Normal}{6}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Segunda Forma Normal}{6}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Terceira Forma Normal}{6}{subsection.5.3}%
+\contentsline {section}{\numberline {6}Diagrama da Camada de Mapeamento}{6}{section.6}%
+\contentsline {section}{\numberline {7}Referências}{6}{section.7}%

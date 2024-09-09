@@ -45,6 +45,7 @@
 O projeto consiste na aplicação dos conhecimentos adquiridos na disciplina "CIC0097 - Banco de Dados". O banco de dados construído, com o tema Rede Social, utilizou como mecanismo de armazenamento o SQLite e o programa com as funções CRUD foi-se implementado na linguagem Python utilizando o framework web Flask.
 
 \section{Diagrama de Entidade Relacionamento}
+\label{sec:mer}
 O diagrama abaixo representa o modelo entidade relacionamento do projeto.
 
 \begin{figure}[!ht]
@@ -93,6 +94,7 @@ As entidades se relacionam de 6 maneiras distintas:
 \end{enumerate}
 
 \section{Modelo Relacional}
+Abaixo encontra-se o modelo relacional gerado a partir do \hyperref[sec:mer]{modelo entidade relacionamento}, utilizando os tipos de dados do SQLite.
 
 \begin{figure}[!ht]
         \centering
@@ -103,6 +105,17 @@ As entidades se relacionam de 6 maneiras distintas:
 \section{Consultas em Álgebra Relacional}
 
 \section{Avaliação das formas normais}
+Analisando as formas normais das tabela, obtemos os seguintes resultados:
+\subsection{Primeira Forma Normal}
+A tabelas \verb|Post|, \verb|Comments| e \verb|Message| estão na Primeira Forma Normal visto que os atributos do complemento das chaves candidatas não são totalmente funcionalmente dependentes de suas respectivas chaves, isto é, há dependências parciais.
+
+Em todos os casos, como cada tabela possui um \verb|id_<tabela>| como chave primária, os demais componentes das chaves compostas são desnecessários.
+
+\subsection{Segunda Forma Normal}
+Nenhuma tabela está na Segunda Forma Normal.
+
+\subsection{Terceira Forma Normal}
+A demais tabelas estão na Terceira Forma Normal visto que todas estão na Segunda Forma Normal e não possuem dependências transitivas.
 
 \section{Diagrama da Camada de Mapeamento}
 
