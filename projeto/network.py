@@ -12,10 +12,13 @@ def dev():
 
 @bp.route('/')
 def index():
-    id_user = session['user_id']
-    user_groups = q.select_user_groups(id_user)
-    all_groups = q.select_group_all()
-    return render_template('network/index.html', user_groups=user_groups, all_groups=all_groups)
+    try:
+        id_user = session['user_id']
+        user_groups = q.select_user_groups(id_user)
+        all_groups = q.select_group_all()
+        return render_template('network/index.html', user_groups=user_groups, all_groups=all_groups)
+    except KeyError:
+        return render_template('network/index.html')
 
 @bp.route('/user/<id_user>')
 def user(id_user):
@@ -72,7 +75,7 @@ def create_post(id_group):
 
         flash(error)
 
-    return render_template('network/create_post.html')
+    return render_template('network/post_create.html')
 
 @bp.route('/group/<id_group>/join', methods=['POST'])
 @login_required
@@ -110,20 +113,20 @@ def comment_post(id_post):
 @bp.route('/chat/<id_user>', methods=['GET'])
 @login_required
 def chat(id_user):
-    current_user = int(session['user_id'])
-    id_user = int(id_user)
+    current_user = q.select_user_info(session['user_id'])
+    user = q.select_user_info(id_user)
 
-    if current_user == int(id_user):
+    if current_user['id'] == user['id']:
         flash("Cannot send a message to yourself")
         return redirect(request.referrer or '/')
 
-    chat_id = q.select_chat_id(id_user, current_user)
+    chat_id = q.select_chat_id(user['id'], current_user['id'])
 
     if chat_id:
         messages = q.select_chat_messages(chat_id)
-        return render_template('network/chat.html', messages=messages, chat_id=chat_id, other_user_id=id_user)
+        return render_template('network/chat.html', messages=messages, chat_id=chat_id, user=user, current_user=current_user)
 
-    return render_template('network/new_chat.html', other_user_id=id_user)
+    return render_template('network/new_chat.html', user=user)
 
 @bp.route('/send_message', methods=['POST'])
 @login_required
@@ -131,8 +134,8 @@ def send_message():
     chat_id = request.form['chat_id']
     message_body = request.form['message_body']
 
-    other_user_id = int(request.form['other_user_id'])
-    user_id = int(session['user_id'])
+    other_user_id = request.form['other_user_id']
+    user_id = session['user_id']
 
     q.create_message(chat_id, user_id, message_body)
     return redirect(url_for('network.chat', id_user=other_user_id))

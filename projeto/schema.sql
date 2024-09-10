@@ -10,6 +10,7 @@ DROP TABLE IF EXISTS [group];
 DROP TABLE IF EXISTS user;
 DROP VIEW IF EXISTS post_view;
 DROP VIEW IF EXISTS comment_view;
+DROP VIEW IF EXISTS message_view;
 
 CREATE TABLE user (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -70,7 +71,7 @@ CREATE TABLE comment (
 CREATE TABLE [group] (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   name TEXT NOT NULL,
-  created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  created TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 -- Primeira forma normal --
@@ -111,3 +112,8 @@ CREATE VIEW comment_view AS
   SELECT comment.*, user.username
     FROM comment
       JOIN user ON comment.id_user = user.id;
+
+CREATE VIEW message_view AS
+SELECT user.username, message.*
+  FROM message
+    JOIN user ON message.id_user = user.id;

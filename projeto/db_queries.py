@@ -216,7 +216,7 @@ def select_chat_messages(chat_id):
     db = get_db()
 
     messages = db.execute(
-        "SELECT * FROM message WHERE id_chat = ?",
+        "SELECT * FROM message_view WHERE id_chat = ?",
         (chat_id,)
     ).fetchall()
 
