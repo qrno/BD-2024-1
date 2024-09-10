@@ -3,7 +3,7 @@
   <div class="post-header">
     <h1>{{post.title}}</h1>
     <p>Posted on {{post.created}} in
-    <a href="{{url_for('network.group_view', id_group=post.id_group)}}">{{post.group_name}}</a>
+    <a href="{{url_for('network.group', id_group=post.id_group)}}">{{post.group_name}}</a>
     by {{post.username}}.</a>
   </div>
   <div class="post-content" style="white-space: pre-line">

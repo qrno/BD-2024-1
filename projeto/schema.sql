@@ -88,7 +88,6 @@ CREATE TABLE chat (
   id_user2 INTEGER,
   FOREIGN KEY (id_user1) REFERENCES user(id),
   FOREIGN KEY (id_user2) REFERENCES user(id)
-
 );
 
 -- Mesma ideia da tabela comment. Ou id é autoincremento ou usamos os outros id's como PK's --

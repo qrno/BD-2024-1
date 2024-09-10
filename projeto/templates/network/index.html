@@ -2,5 +2,21 @@
 
 {% block content %}
 
+<h1>Followed Groups</h1>
+
+<ul>
+  {% for group in user_groups %}
+    <li><a href="{{url_for('network.group', id_group=group.id)}}">{{group.name}}</a></li>
+  {% endfor %}
+</ul>
+
+<h1>All Groups</h1>
+<ul>
+  {% for group in all_groups %}
+    <li><a href="{{url_for('network.group', id_group=group.id)}}">{{group.name}}</a></li>
+  {% endfor %}
+</ul>
+
+<a href="{{url_for('network.group_create')}}">Create Group</a>
 
 {% endblock %}

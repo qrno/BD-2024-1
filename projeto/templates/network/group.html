@@ -3,20 +3,24 @@
 
 {% block content %}
 
+
 <div class="group-main">
   <div class="group-header">
     <h1>{{group.name}}</h1>
     Created on {{group.created}}.
-    <details>
-      <summary>Members</summary>
-      <ul>
-        {% for member in members %}
-          {{member.name}}
-        {% endfor %}
-      </ul>
-    </details>
+    {% if members %}
+      <p>Members:
+      {% for member in members %}
+        <a href="{{url_for('network.user', id_user=member.id)}}">{{member.username}}</a>{% if loop.last %}.{% else %}, {% endif %}
+      {% endfor %}
+      </p>
+    {% endif %}
     <hr>
   </div>
+
+  <form action="{{url_for('network.join_group', id_group=group.id)}}" method="post">
+    <button type="submit">Join Group</button>
+  </form>
 
   <div class="group-content">
     <h2>Posts</h2>
