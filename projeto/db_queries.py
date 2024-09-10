@@ -96,6 +96,43 @@ def get_group_id(group_name, db):
         return group[0]
     return None
 
+def get_chat(user_id1, user_id2, db):
+    if int(user_id1) > int(user_id2):
+        user_id1 , user_id2 = user_id2 , user_id1
+
+    return db.execute(
+        "SELECT * FROM chat WHERE (id_user1 = ? AND id_user2 = ?)",
+        (user_id1, user_id2)
+    )
+
+def get_chat_id(user_id1, user_id2, db):
+    if int(user_id1) > int(user_id2):
+        user_id1 , user_id2 = user_id2 , user_id1
+
+    chat = db.execute(
+        "SELECT * FROM chat WHERE (id_user1 = ? AND id_user2 = ?)",
+        (user_id1, user_id2)
+    ).fetchone()
+
+    if chat:
+        return chat[0]
+    return None
+
+def get_chat_messages(chat_id, db):
+    return db.execute(
+        "SELECT * FROM message WHERE id_chat = ?",
+        (chat_id,)
+    )
+
+def insert_chat(user_id1, user_id2, db):
+    if int(user_id1) > int(user_id2):
+        user_id1, user_id2 = user_id2 , user_id1
+
+    db.execute(
+        "INSERT INTO chat (id_user1, id_user2) VALUES (?, ?)",
+        (user_id1, user_id2)
+    )
+    db.commit()
 
 def insert_post(title, body, user_id, group_id, db):
     db.execute(
@@ -146,14 +183,8 @@ def insert_comment(user_id, post_id, content, db):
     )
     db.commit()
 
-def insert_chat(user_id1, user_id2, db):
-    db.execute(
-        "INSERT INTO chat (id_user1, id_user2) VALUES (?, ?)",
-        (user_id1, user_id2)
-    )
-    db.commit()
-
 def insert_message(chat_id, user_id, body, db):
+
     db.execute(
         "INSERT INTO message (id_chat, id_user, body) VALUES (?, ?, ?)",
         (chat_id, user_id, body)

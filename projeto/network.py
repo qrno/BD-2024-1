@@ -61,10 +61,6 @@ def create_group():
             try:
                 insert_group(name, db)
 
-                group_id = db.execute(
-                    "SELECT * FROM [group] WHERE name = ?", (name,)
-                ).fetchone()[0]
-
                 group_id = get_group_id(name, db)
 
                 insert_membership(user_id, group_id, db)
@@ -144,3 +140,48 @@ def comment_post(id_post):
         insert_comment(user, id_post, body, db)
         return redirect(request.referrer or '/')
     return render_template('network/index.html')
+
+@bp.route('/chat/<id_user>', methods=['GET'])
+@login_required
+def chat(id_user):
+    db = get_db()
+    current_user = session.get('user_id')
+
+    if current_user == int(id_user):
+        flash(f"Cannot send a message to yourself")
+        return redirect(request.referrer or '/')
+
+    chat_id = get_chat_id(int(id_user), int(current_user), db)
+
+    if chat_id:
+        messages = get_chat_messages(chat_id, db)
+        return render_template('network/chat.html', messages=messages, chat_id=chat_id, other_user_id=id_user)
+
+    return render_template('network/new_chat.html', other_user_id=id_user)
+
+@bp.route('/send_message', methods=['POST'])
+@login_required
+def send_message():
+    db = get_db()
+    chat_id = request.form['chat_id']
+    other_user_id = request.form['other_user_id']
+    message_body = request.form['message_body']
+    user_id = session.get('user_id')
+
+    insert_message(chat_id, user_id, message_body, db)
+    return redirect(url_for('network.chat', id_user=other_user_id)) 
+
+@bp.route('/start_chat/<id_user>', methods=['POST'])
+@login_required
+def start_chat(id_user):
+    db = get_db()
+    user_id = session.get('user_id')
+    message_body = request.form['message_body']
+
+    insert_chat(user_id, id_user, db)
+
+    chat_id = get_chat_id(user_id, id_user, db)
+
+    insert_message(chat_id, user_id, message_body, db)
+
+    return redirect(url_for('network.chat', id_user=id_user))

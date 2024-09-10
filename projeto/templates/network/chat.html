@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Chat with User {{other_user_id}}</h1>
+
+<div id="messages">
+  {% for message in messages %}
+  <p><strong>User {{message.id_user}}:</strong> {{message.body}} <em>({{message.created}})</em></p>
+  {% endfor %}
+</div>
+
+<form action="{{url_for('network.send_message', chat_id=chat_id)}}" method="post">
+  <input type="hidden" name="chat_id" value="{{chat_id}}">
+  <input type="hidden" name="other_user_id" value="{{other_user_id}}">
+  <textarea name="message_body" required></textarea>
+  <button type="submit">Send</button>
+</form>
+{% endblock %}

@@ -3,7 +3,8 @@
   - mostra os posts
   - foto do usuário
 - Adicionar seguir usuários -- FEITO
-- Adicionar comentários
+- Adicionar comentários -- FEITO
+- Adicionar vizualizar comentários
 - Adicionar mensagens
 - Colocar os posts no index
 
