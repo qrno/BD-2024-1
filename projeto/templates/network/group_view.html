@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "network/post_view.html" import post_view %}
+{% from "network/post_view_small.html" import post_view_small %}
 
 {% block content %}
 
@@ -25,7 +25,7 @@
 
     <div class="post-list">
       {% for post in posts %}
-        {{post_view(post)}}
+        {{post_view_small(post)}}
       {% endfor %}
     </div>
   </div>

@@ -1,0 +1,13 @@
+{% macro post_view_small(post) -%}
+<div class="post-small-main">
+  <h2><a href="{{url_for('network.post', id_post=post.id)}}">{{post.title}}</a></h2>
+
+  <p>
+  <a href="{{url_for('network.user_view', id_user=post.id_user)}}">{{post.username}}</a> |
+  <time>{{post.created}}</time> |
+  <a href="{{url_for('network.group_view', id_group=post.id_group)}}">{{post.group_name}}</a> |
+  {{post.likes}} likes |
+  {{post.comments | length}} comments
+  </p>
+</div>
+{%- endmacro %}

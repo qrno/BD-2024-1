@@ -1,3 +1,91 @@
+# Quirino
+
+from projeto.db import get_db
+
+def select_group_info(id_group):
+    db = get_db()
+
+    group = db.execute(
+        'SELECT * FROM `group` WHERE id = ?',
+        (id_group,)
+    ).fetchone()
+
+    members = db.execute(
+        'SELECT * FROM membership WHERE id_group = ?',
+        (id_group, )
+    ).fetchall()
+
+    posts = select_group_posts(id_group)
+
+    group = dict(group)
+    group['members'] = members
+    group['posts'] = posts
+
+    print(group)
+
+    return group
+
+def select_group_posts(id_group):
+    db = get_db()
+
+    posts = db.execute(
+        'SELECT id FROM post_view WHERE id_group = ?',
+        (id_group,)
+    ).fetchall()
+    post_ids = [post['id'] for post in posts]
+
+    posts = []
+    for post_id in post_ids:
+        posts.append(select_post_info(post_id))
+
+    return posts
+
+def select_post_info(id_post):
+    db = get_db()
+
+    post = db.execute(
+        'SELECT * FROM post_view WHERE id = ?',
+        (id_post,)
+    ).fetchone()
+
+    comments = db.execute(
+        'SELECT * FROM comment_view WHERE id_post = ?',
+        (id_post,)
+    ).fetchall()
+
+    likes = db.execute(
+        'SELECT COUNT(*) from `like` WHERE id_post = ?',
+        (id_post,)
+    ).fetchone()
+
+    post = dict(post)
+    post['comments'] = comments
+    post['likes'] = likes['COUNT(*)']
+
+    return post
+
+def select_user_info(id_user):
+    db = get_db()
+
+    user = db.execute(
+        'SELECT * FROM user WHERE id = ?',
+        (id_user,)
+    ).fetchone()
+
+    # posts = db.execute(
+    #     'SELECT * FROM post_view WHERE id_user = ?',
+    #     (id_user,)
+    # ).fetchall()
+    #
+    # comments = db.execute(
+    #     'SELECT * FROM comment_view WHERE id_user = ?',
+    #     (id_user,)
+    # ).fetchall()
+
+    return user
+
+# Arthur
+
 def get_all_users(db):
     return db.execute(
         "SELECT * FROM user"
@@ -38,7 +126,7 @@ def get_post_likes(post_id, db):
 
 def get_user_posts(user_id, db):
     return db.execute(
-        "SELECT * FROM post WHERE id_user = ?", (user_id,)
+        "SELECT * FROM post_view WHERE id_user = ?", (user_id,)
     )
 
 def get_user_comments(user_id, db):

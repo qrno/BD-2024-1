@@ -8,6 +8,8 @@ DROP TABLE IF EXISTS chat;
 DROP TABLE IF EXISTS post;
 DROP TABLE IF EXISTS [group];
 DROP TABLE IF EXISTS user;
+DROP VIEW IF EXISTS post_view;
+DROP VIEW IF EXISTS comment_view;
 
 CREATE TABLE user (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -54,7 +56,7 @@ CREATE TABLE [like] (
   FOREIGN KEY (id_post) REFERENCES post(id)
 );
 
--- Deixei o id como única chave, caso contrário ele não pode ser autoincremento -- 
+-- Deixei o id como única chave, caso contrário ele não pode ser autoincremento --
 CREATE TABLE comment (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   id_user INTEGER NOT NULL,
@@ -67,8 +69,8 @@ CREATE TABLE comment (
 
 CREATE TABLE [group] (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  name TEXT UNIQUE NOT NULL,
-  created TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  name TEXT NOT NULL,
+  created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 );
 
 -- Primeira forma normal --
@@ -99,3 +101,14 @@ CREATE TABLE message (
   FOREIGN KEY (id_chat) REFERENCES chat(id),
   FOREIGN KEY (id_user) REFERENCES user(id)
 );
+
+CREATE VIEW post_view AS
+  SELECT post.*, user.username, `group`.name AS group_name
+    FROM post
+      JOIN `group` on post.id_group = `group`.id
+      JOIN user on post.id_user = user.id;
+
+CREATE VIEW comment_view AS
+  SELECT comment.*, user.username
+    FROM comment
+      JOIN user ON comment.id_user = user.id;

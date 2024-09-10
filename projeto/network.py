@@ -3,18 +3,88 @@ from flask import (Blueprint, render_template, request, flash, redirect, url_for
 from projeto.db import get_db
 from projeto.auth import login_required
 from projeto.db_queries import *
+import projeto.db_queries as q
 
 bp = Blueprint('network', __name__)
+
+@bp.route('/dev')
+def dev():
+    return render_template('network/dev.html')
 
 @bp.route('/')
 def index():
     return render_template('network/index.html')
+
+@bp.route('/user/<id_user>')
+def user_view(id_user):
+    user = q.select_user_info(id_user)
+    return render_template('network/user_view.html', user=user)
 
 @bp.route('/user_list')
 @login_required
 def user_list():
     users = get_all_users(get_db())
     return render_template('network/user_list.html', users=users)
+
+@bp.route('/user_post_list')
+@login_required
+def user_post_list():
+    db = get_db()
+    user_id = session.get('user_id')
+    posts = get_user_posts(user_id, db)
+    return render_template('network/user_post_list.html', posts=posts)
+
+@bp.route('/post/<id_post>')
+def post(id_post):
+    post = q.select_post_info(id_post)
+    return render_template('network/post.html', post=post)
+
+@bp.route('/create_group', methods=('GET', 'POST'))
+@login_required
+def create_group():
+    if request.method == 'POST':
+        name = request.form['name']
+        user_id = session.get('user_id')
+        db = get_db()
+        error = None
+
+        if not name:
+            error = "Group name is required"
+        if error is None:
+            try:
+                insert_group(name, db)
+
+                group_id = get_group_id(name, db)
+
+                insert_membership(user_id, group_id, db)
+
+            except db.IntegrityError:
+                error = f"Group {name} already exists"
+            else:
+                return redirect(url_for("network.group_view", id_group=group_id))
+
+        flash(error)
+
+    return render_template('network/create_group.html')
+
+@bp.route('/group_list')
+@login_required
+def group_list():
+    db = get_db()
+    groups = get_all_groups(db)
+    return render_template('network/group_list.html', groups=groups)
+
+@bp.route('/group/<id_group>')
+def group_view(id_group):
+    db  = get_db()
+
+    group = get_group(id_group, db).fetchone()
+
+    print(q.select_group_info(id_group))
+
+    posts = q.select_group_posts(id_group)
+
+    return render_template('network/group_view.html', group=group, posts=posts, members=[])
 
 @bp.route('/group/<id_group>/create_post', methods=('GET', 'POST'))
 @login_required
@@ -38,60 +108,6 @@ def create_post(id_group):
 
     return render_template('network/create_post.html')
 
-@bp.route('/user_post_list')
-@login_required
-def user_post_list():
-    db = get_db()
-    user_id = session.get('user_id')
-    posts = get_user_posts(user_id, db)
-    return render_template('network/user_post_list.html', posts=posts)
-
-@bp.route('/create_group', methods=('GET', 'POST'))
-@login_required
-def create_group():
-    if request.method == 'POST':
-        name = request.form['name']
-        user_id = session.get('user_id')
-        db = get_db()
-        error = None
-
-        if not name:
-            error = "Group name is required"
-        if error is None:
-            try:
-                insert_group(name, db)
-
-                group_id = get_group_id(name, db)
-
-                insert_membership(user_id, group_id, db)
-                
-            except db.IntegrityError:
-                error = f"Group {name} already exists"
-            else:
-                return redirect(url_for("network.group_view", id_group=group_id))
-
-        flash(error)
-
-    return render_template('network/create_group.html')
-
-@bp.route('/group_list')
-@login_required
-def group_list():
-    db = get_db()
-    groups = get_all_groups(db)
-    return render_template('network/group_list.html', groups=groups)
-
-@bp.route('/group_view/<id_group>')
-def group_view(id_group):
-    db  = get_db()
-
-    group = get_group(id_group, db).fetchone()
-
-    posts = get_group_posts(id_group, db).fetchall()
-    
-    members = get_group_members(id_group, db).fetchall()
-
-    return render_template('network/group_view.html', group=group, posts=posts, members=members)
 
 @bp.route('/user_group_list')
 @login_required
@@ -112,7 +128,7 @@ def follow_user(id_user):
     try:
         insert_follow(followed, id_user, db)
     except db.IntegrityError:
-        flash(f"Already Following")
+        flash("Already Following")
     
     return render_template('network/user_list.html', users=get_all_users(get_db()))
 
@@ -124,10 +140,10 @@ def like_post(id_post):
     try:
         insert_like(user, id_post, db)
     except db.IntegrityError:
-        flash(f"Already Liked")
-    
+        flash("Already Liked")
+
     return redirect(request.referrer)
-    
+
 @bp.route('/comment_post/<id_post>', methods=['POST'])
 @login_required
 def comment_post(id_post):
@@ -135,7 +151,7 @@ def comment_post(id_post):
     user = session.get('user_id')
     body = request.form['body']
     if not body:
-        flash(f"Content is required")
+        flash("Content is required")
     else:
         insert_comment(user, id_post, body, db)
         return redirect(request.referrer or '/')
@@ -148,7 +164,7 @@ def chat(id_user):
     current_user = session.get('user_id')
 
     if current_user == int(id_user):
-        flash(f"Cannot send a message to yourself")
+        flash("Cannot send a message to yourself")
         return redirect(request.referrer or '/')
 
     chat_id = get_chat_id(int(id_user), int(current_user), db)

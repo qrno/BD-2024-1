@@ -1,21 +1,6 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %}
 
-<div class="index">
-  <h1>Index</h1>
+{% block content %}
 
-  <div class="list-index">
-    <a class="topics" href="{{url_for('network.user_list')}}">User List</a>
-
-    <a class="topics" href="{{url_for('network.create_group')}}">Create Group</a>
-
-    <a class="topics" href="{{url_for('network.group_list')}}">Group List</a>
-
-    <a class="topics" href="{{url_for('network.user_post_list')}}">Your Posts</a>
-
-    <a class="topics" href="{{url_for('network.user_group_list')}}">Your Groups</a>
-  <div/>
-
-<div />
 
 {% endblock %}
-
