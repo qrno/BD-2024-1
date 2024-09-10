@@ -2,12 +2,13 @@
   - mostra os grupos dele
   - mostra os posts
   - foto do usuário
-- Adicionar seguir usuários
-- Adicionar comentários
+- Adicionar seguir usuários -- FEITO
+- Adicionar comentários -- FEITO
+- Adicionar vizualizar comentários
 - Adicionar mensagens
 - Colocar os posts no index
 
-- Camada de persistência
+- Camada de persistência -- FEITO
 
 - CRUD
   - Editar e Deletar posts

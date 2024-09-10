@@ -7,5 +7,17 @@
   <div class="post-content">
     {{post.body}}
   </div>
+  <div class="post-actions">
+    <form action="{{url_for('network.like_post', id_post=post.id)}}" method="post">
+      <input type="hidden" name="post_id" value="{{post.id}}">
+      <button type="submit">Like</button>
+    </form>
+    <form action="{{url_for('network.comment_post', id_post=post.id)}}" method="post">
+      <label class="label-login" name="body">Comment</label>
+      <input class="input-login" name="body" id="body" required/>
+      <input class="buttom-login" type="submit" value="post">
+    </form>
+  </div>
+
 </div>
 {%- endmacro %}
