@@ -6,6 +6,7 @@
 <h1>User Profile</h1>
 
 <h1>{{user.username}}</h1>
+<img src="{{ url_for('network.user_photo', user_id=user.id) }}" alt="User Photo" class="image">
 <h2>id: {{user.id}}</h2>
 <form action="{{url_for('network.chat', id_user=user.id)}}" method="get">
   <input type="hidden" name="user_id" value="{{user.id}}">

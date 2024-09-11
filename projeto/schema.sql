@@ -15,7 +15,8 @@ DROP VIEW IF EXISTS message_view;
 CREATE TABLE user (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   username TEXT UNIQUE NOT NULL,
-  password TEXT NOT NULL
+  password TEXT NOT NULL,
+  photo BLOB NOT NULL
 );
 
 -- Primeira forma normal --
