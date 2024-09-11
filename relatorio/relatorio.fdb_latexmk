@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1725935266.81024 "/home/guilherme/Documentos/UnB/BD/BD-2024-1/relatorio/relatorio.tex" "relatorio.pdf" "relatorio" 1725935268.41549 0
-  "/home/guilherme/Documentos/UnB/BD/BD-2024-1/relatorio/relatorio.tex" 1725935266.49347 5580 a33d149d7739660acd38396fb4116d84 ""
+["pdflatex"] 1726022856.50883 "/home/guilherme/Documentos/UnB/BD/BD-2024-1/relatorio/relatorio.tex" "relatorio.pdf" "relatorio" 1726022857.31774 0
+  "/home/guilherme/Documentos/UnB/BD/BD-2024-1/relatorio/relatorio.tex" 1726022855.48286 7114 047e7e52849521b0f066befbbc107fe1 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1136768653 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
@@ -29,9 +29,12 @@
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb" 1248133631 34811 78b52f49e893bcba91bd7581cdc144c0 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb" 1248133631 32080 340ef9bf63678554ee606688e7b5339d ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1248133631 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
+  "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb" 1248133631 36281 c355509802a035cadc5f15869451dcee ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1248133631 35752 024fb6c41858982481f6968b5fc26508 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb" 1248133631 32722 d7379af29a190c3f453aba36302ff5a9 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb" 1248133631 32362 179c33bbf43f19adbb3825bb4e36e57a ""
+  "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb" 1248133631 32762 224316ccc9ad3ca0423a14971cfa7fc1 ""
+  "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1248133631 32569 5e5ddc8df908dea60932f3c484a54c0d ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb" 1248133631 31099 c85edf1dd5b9e826d67c9c7293b6786c ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb" 1215737283 138258 6525c253f16cededa14c7fd0da7f67b2 ""
   "/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii" 1461363279 71627 94eb9990bed73c364d7f53f960cc8c5b ""
@@ -97,10 +100,10 @@
   "imagens/mapeamento.png" 1725935184.85283 17614 eb9cf47c5a1c495ba751491b775eb79b ""
   "imagens/mer.png" 1725903870.94853 63232 99424bc01e7d7ea19bf38312d04beff7 ""
   "imagens/mr.jpg" 1725810736.84945 120508 7bcd326ec907eea17a87079ec32891df ""
-  "relatorio.aux" 1725935268.27944 2978 10cc3309c9d88988d5d11ac55cef177d "pdflatex"
-  "relatorio.out" 1725935268.28044 2274 04add6b447b13b7f95599bc4d5f53226 "pdflatex"
-  "relatorio.tex" 1725935266.49347 5580 a33d149d7739660acd38396fb4116d84 ""
-  "relatorio.toc" 1725935268.28144 1523 5c748c0780c1a5a0fbd89afeb3981baa "pdflatex"
+  "relatorio.aux" 1726022857.24286 3462 269f6387ed1258fb4c33dcc7e4cf96ed "pdflatex"
+  "relatorio.out" 1726022857.24386 3317 c85897688e38f95b30bca167426a7614 "pdflatex"
+  "relatorio.tex" 1726022855.48286 7114 047e7e52849521b0f066befbbc107fe1 ""
+  "relatorio.toc" 1726022857.24386 1884 ddf6c5dd757918cabce5051b6a9d0925 "pdflatex"
   (generated)
   "relatorio.aux"
   "relatorio.log"

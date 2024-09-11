@@ -103,6 +103,29 @@ Abaixo encontra-se o modelo relacional gerado a partir do \hyperref[sec:mer]{mod
 \end{figure}
 
 \section{Consultas em Álgebra Relacional}
+\subsection{Grupos nos quais um determinado usuário faz parte}
+Seja um usuário $u$, queremos saber quais grupos ele faz parte. Para isso, definimos a função $f$ da seguinte forma:
+$$f: User \rightarrow Group$$
+$$u \rightarrow Group \bowtie_{id == id\_group} (\sigma_{id\_user == u.id}(Membership)),$$
+onde é feito uma seleção na tabela \verb|Membership| nos registros nos quais possuem o mesmo \verb|id| que o usuário $u$ e em seguida uma junção com a tabela \verb|Group|, sendo o atributo de ligação o \verb|group_id|.
+
+\subsection{Quantidade de likes ou comentários que um usuário deu em determinado grupo}
+Seja um usuário $u$, queremos saber quantas publicações ele curtiu em determinado grupo no qual participa. Definimos a função $g$ tal que:
+$$g: User \rightarrow Post$$
+$$u \rightarrow Post \bowtie_{id\_group == id} (\pi_{id}(f(u))).$$
+
+Similarmente, podemos definir a função $h$ para encontrarmos a quantidade de comentários:
+$$h: User \rightarrow Comments$$
+$$u \rightarrow Comments \bowtie_{id\_group == id} (\pi_{id}(f(u))).$$
+
+\subsection{Recomendação de usuários ou grupos}
+Seja um usuário $u$, ele pode ver os usuários nos quais ele ainda não segue. Para isso, definimos a seguinte função $\alpha$:
+$$\alpha: User \rightarrow User$$
+$$u \rightarrow \sigma_{id\_follower == u.id}((User \times User) - Follow),$$
+
+e para grupos a mesma ideia segue para a função $\beta$:
+$$\beta: User \rightarrow Membership$$
+$$u \rightarrow \sigma_{id\_user == u.id}((User \times Group) - Membership).$$
 
 \section{Avaliação das formas normais}
 Analisando as formas normais das tabela, obtemos os seguintes resultados:
