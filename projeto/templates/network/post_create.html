@@ -11,12 +11,4 @@
   <input class="buttom-login" type="submit" value="Post">
 </form>
 
-<h1>Create Post</h1>
-<form method="POST">
-  {{ form.csrf_token }}
-  {{ form.title.label }} {{ form.title(size=20) }}
-  {{ form.body.label }} {{ form.body(size=20) }}
-  <input type="submit" value="Post">
-</form>
-
 {% endblock %}
