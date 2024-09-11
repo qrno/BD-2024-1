@@ -3,11 +3,13 @@
 {% block content %}
 <h1>Register</h1>
 
-<form class="form-login" method="post">
+<form class="form-login" method="post" enctype="multipart/form-data">
   <label class="label-login" for="username">Username</label>
   <input class="input-login" name="username" id="username" required>
   <label class="label-login" for="password">Password</label>
   <input class="input-login" type="password" name="password" id="password" required>
+  <label class="label-login" for="photo">Photo:</label>
+  <input type="file" name="photo" required>
   <input class="buttom-login" type="submit" value="Register">
 </form>
 {% endblock %}
