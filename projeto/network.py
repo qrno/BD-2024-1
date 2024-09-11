@@ -1,4 +1,4 @@
-from flask import (Blueprint, render_template, request, flash, redirect, url_for, session)
+from flask import (Blueprint, render_template, request, flash, redirect, url_for, session, send_file)
 
 from flask_wtf import FlaskForm
 from wtforms import TextAreaField, StringField
@@ -7,6 +7,7 @@ from wtforms.validators import DataRequired
 from projeto.db import get_db
 from projeto.auth import login_required
 import projeto.db_queries as q
+import io
 
 bp = Blueprint('network', __name__)
 
@@ -28,6 +29,21 @@ def index():
 def user(id_user):
     user = q.select_user_info(id_user)
     return render_template('network/user.html', user=user)
+
+@bp.route('/user/<int:user_id>/photo')
+def user_photo(user_id):
+    db = get_db()
+    user = db.execute(
+        "SELECT photo FROM user WHERE id = ?", (user_id,)
+    ).fetchone()
+
+    if user is None or user['photo'] is None:
+        return "No photo found", 404
+
+    return send_file(
+        io.BytesIO(user['photo']),
+        mimetype='image/jpeg'
+    )
 
 @bp.route('/post/<id_post>')
 def post(id_post):
