@@ -12,6 +12,12 @@
 
 
   <div class="post-actions">
+    <form action="{{url_for('network.delete_post', id_post=post.id)}}" method="post">
+      <button type="submit">Delete Post</button>
+    </form>
+    <form action="{{url_for('network.edit_post', id_post=post.id)}}" method="post">
+      <button type="submit">Edit post</button>
+    </form>
     <h2>Likes: {{post.likes}}</h2>
     <form action="{{url_for('network.like_post', id_post=post.id)}}" method="post">
       <input type="hidden" name="post_id" value="{{post.id}}">

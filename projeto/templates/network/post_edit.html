@@ -1,14 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Create Post</h1>
-
-<form class="form-login" method="post">
-    <label class="label-login" for="title">Title</label>
-    <input class="input-login" name="title" id="title" required>
-    <label class="label-login" for="body">Body</label>
-    <textarea class="textarea-post" name="body" id="body" rows="5" required></textarea>
-    <input class="buttom-login" type="submit" value="Post">
-  </form>
+<h1>Edit Post</h1>
+<form method="POST">
+  {{ form.csrf_token }}
+  {{ form.title.label }} {{ form.title(size=20) }}
+  {{ form.body.label }} {{ form.body(size=20) }}
+  <input type="submit" value="Save">
+</form>
 
 {% endblock %}

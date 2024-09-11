@@ -150,6 +150,23 @@ def create_post(title, body, user_id, group_id):
     db.commit()
     return cursor.lastrowid
 
+def update_post(id_post, title, body):
+    db = get_db()
+    db.execute(
+        '''
+        UPDATE post
+            SET title=?, body=?
+            WHERE post.id = ?
+        ''',
+        (title, body, id_post)
+    )
+    db.commit()
+
+def delete_post(id_post):
+    db = get_db()
+    db.execute('DELETE FROM post WHERE id = ?', (id_post,))
+    db.commit()
+
 def create_follow(id_user, id_follower):
     db = get_db()
     db.execute(

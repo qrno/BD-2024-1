@@ -1,5 +1,9 @@
 from flask import (Blueprint, render_template, request, flash, redirect, url_for, session)
 
+from flask_wtf import FlaskForm
+from wtforms import TextAreaField, StringField
+from wtforms.validators import DataRequired
+
 from projeto.db import get_db
 from projeto.auth import login_required
 import projeto.db_queries as q
@@ -55,6 +59,10 @@ def group(id_group):
     group = q.select_group_info(id_group)
     return render_template('network/group.html', group=group, posts=group['posts'], members=group['members'])
 
+class PostForm(FlaskForm):
+    title = StringField('Title', validators=[DataRequired()])
+    body = TextAreaField('Body', validators=[DataRequired()])
+
 @bp.route('/group/<id_group>/create_post', methods=('GET', 'POST'))
 @login_required
 def create_post(id_group):
@@ -74,8 +82,35 @@ def create_post(id_group):
             return redirect(url_for("network.post", id_post=id_post))
 
         flash(error)
-
     return render_template('network/post_create.html')
+
+@bp.route('/post/<id_post>/edit', methods=('GET', 'POST'))
+@login_required
+def edit_post(id_post):
+    post = q.select_post_info(id_post)
+
+    if session['user_id'] != post['id_user']:
+        flash("You're not allowed to edit someone else's post")
+        return redirect(url_for('network.post', id_post=id_post))
+
+    form = PostForm(title=post['title'], body=post['body'])
+    if form.validate_on_submit():
+        q.update_post(id_post, form.title.data, form.body.data)
+        return redirect(url_for('network.post', id_post=id_post))
+
+    return render_template('network/post_edit.html', form=form)
+
+@bp.route('/post/<id_post>/delete', methods=['POST'])
+@login_required
+def delete_post(id_post):
+    post = q.select_post_info(id_post)
+
+    if session['user_id'] != post['id_user']:
+        flash("You're not allowed to delete someone else's post")
+        return redirect(url_for('network.post', id_post=id_post))
+
+    q.delete_post(id_post)
+    return redirect(url_for('network.group', id_group=post['id_group']))
 
 @bp.route('/group/<id_group>/join', methods=['POST'])
 @login_required
